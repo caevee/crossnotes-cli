@@ -6,17 +6,15 @@ import json
 
 # If no arguments are given display the help with a list of all arguments
 if(len(sys.argv) == 1):
-    print("Display help")
+    print("Arguments:\nls = List all notes")
 
 else:
     if(sys.argv[1] == "ls"):
-        print("Listing stuff")
-        try:
-            print(sys.argv[2])
-        except:
-            response = requests.get("https://crossnotes-api.herokuapp.com/notes")
-            data = json.loads(response.text)
-            print(data)
+        response = requests.get("https://crossnotes-api.herokuapp.com/notes")
+        data = json.loads(response.text)
+        for x in data:
+            print("ID: " + x['id'] + "\nTitle: " + x['title'] + "\nContent: " + x['content'])
+            print("")
 
     elif(sys.argv[1] == "rm"):
         print("Removing stuff")
