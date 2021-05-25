@@ -6,7 +6,7 @@ import json
 
 # If no arguments are given display the help with a list of all arguments
 if(len(sys.argv) == 1):
-    print("Arguments:\nls = List all notes")
+    print("Arguments:\nls = List all notes\nadd {title} {content} = Add new note\nrm {id} = Remove note")
 
 else:
     # Code to run when argument happens to be ls(list)
@@ -16,6 +16,7 @@ else:
         # Convert data into python data structure
         data = json.loads(response.text)
         # Print array of data
+        print("")
         for x in data:
             print("ID: " + x['id'] + "\nTitle: " + x['title'] + "\nContent: " + x['content'])
             print("")
